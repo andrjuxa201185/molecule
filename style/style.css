@@ -1,0 +1,20 @@
+canvas {        
+    background-color: rgba(39, 26, 26, 0.527);
+    /* margin-top: 10px; */
+    border: solid 1px black;
+    /* height: 100vh; */
+    /* width: 100%; */
+  }
+  button{
+    padding: 7px 20px;
+    font-size: 18px;
+  }
+  span{
+    font-size: 18px;
+  }
+  #start{
+    background-color: green;
+  }
+  #stop{
+    background-color: red;
+  }
