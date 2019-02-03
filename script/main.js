@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
   let molecule = new Molecule(canvas, Point, 50, 3);
 
   molecule.start(); 
-  setTimeout(molecule.stop.bind(molecule), 2000);
+  // setTimeout(molecule.stop.bind(molecule), 2000);
  
 
 });
