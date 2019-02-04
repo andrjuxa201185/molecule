@@ -3,9 +3,8 @@ class Point {
       this.positionX = 50;
       this.positionY = 50;
       this.speedY = 1;
-      this.speedX = -1;
+      this.speedX = 1;
       this.color = "rgb(34, 138, 124)";
-      // this.color = "rgb(124, 252, 5)";
       this.size = 5;
     }
 
@@ -19,11 +18,9 @@ class Point {
 
     drow(ctx, x, y){
       ctx.fillStyle = this.color;
-
       ctx.beginPath();
       ctx.arc(this.positionX, this.positionY, this.size, 0, 6);
       ctx.fill();
-
       ctx.beginPath();
       ctx.moveTo(this.positionX, this.positionY);
       ctx.lineTo(x , y);
@@ -45,6 +42,7 @@ class Point {
       }     
       if(this.positionX >= width-5 || this.positionX < 5 ) {
         this.speedX = -this.speedX;
+        this.size = this.size==5?3:5;
       }     
     }
   }

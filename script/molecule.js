@@ -14,7 +14,6 @@ class Molecule {
     animate () {
         this.isAnimated = true;
         this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight); 
-        
         for (let i = 0; i < this.numOfpoint; i++) {
             if (this.point[i]) {
                 for (let j = 1; j < this.numOfLine; j++) {
@@ -34,28 +33,19 @@ class Molecule {
 
     start () {
         if (this.isAnimated) return;
-
         let t = 500;
-        
         for (let i = 0; i < this.numOfpoint; i++) {
             setTimeout(() => {
                 this.point[i] = new this.figure();
                 this.point[i].setParam(this.speed, this.speed);
             }, t);
-            t += Math.random() * 1500;
+            t += Math.random() * 1000;
         }
-
-        // setTimeout(() => {
-        //     this.square[i] = new this.figure();
-        //     this.square[i].setParam(this.speed);
-        // }, Math.random() * 8000);
-
         this.animate();
     } 
     
     stop () {
         cancelAnimationFrame(this.raf);
         this.isAnimated = false;
-        console.log("stop");
     }
 }

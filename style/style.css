@@ -2,7 +2,7 @@
   margin: 0%;
   padding: 0%;
 }
-body{
+header{
   position: relative;
 }
 canvas {        
@@ -17,12 +17,12 @@ h1{
   position: absolute;
   top:50%;
   left: 50%;
-  font-size: 92px;
+  font-size: 62px;
   color: white;
   transform: translate(-50%, -50%);
   text-transform: uppercase;
   z-index: 9999;
-  letter-spacing: 40px;
-  text-indent: 40px;
+  letter-spacing: 20px;
+  text-indent: 20px;
 }
 
