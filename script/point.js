@@ -3,16 +3,17 @@ class Point {
       this.positionX = 50;
       this.positionY = 50;
       this.speedY = 1;
-      this.speedX = 1;
-      this.color = "brown";
+      this.speedX = -1;
+      this.color = "rgb(34, 138, 124)";
+      // this.color = "rgb(124, 252, 5)";
       this.size = 5;
     }
 
     setParam(speedY = 3, speedX = 3){
       this.speedY = Math.random() * speedY;
       this.speedX = Math.random() * speedX;
-      this.positionY = 50 + Math.random() * 500;
-      this.positionX = 50 + Math.random() * 800;
+      this.positionY = Math.random() * 700;
+      this.positionX = Math.random() * 1550;
       this.colorSquare = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
     }
 
@@ -38,11 +39,11 @@ class Point {
     checkPosition(elem){
       let width = elem.clientWidth;
       let height = elem.clientHeight;
-      if(this.positionY >= height-50 || this.positionY < 50 ) {
+      if(this.positionY >= height-5 || this.positionY < 5 ) {
         this.speedY = -this.speedY;
         this.size = this.size==5?3:5;
       }     
-      if(this.positionX >= width-50 || this.positionX < 50 ) {
+      if(this.positionX >= width-5 || this.positionX < 5 ) {
         this.speedX = -this.speedX;
       }     
     }

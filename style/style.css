@@ -1,17 +1,28 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+body{
+  position: relative;
+}
 canvas {        
-    background-color: rgba(39, 26, 26, 0.527);
+    background-color:black;
     border: solid 1px black;
   }
   button{
     padding: 7px 20px;
     font-size: 18px;
   }
-  span{
-    font-size: 18px;
-  }
-  #start{
-    background-color: green;
-  }
-  #stop{
-    background-color: red;
-  }
+h1{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  font-size: 92px;
+  color: white;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  z-index: 9999;
+  letter-spacing: 40px;
+  text-indent: 40px;
+}
+

@@ -6,7 +6,7 @@ class Molecule {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.numOfpoint = numOfpoint;
-        this.speed = 4;
+        this.speed = 2;
         this.isAnimated = false;
         this.numOfLine = numOfLine;
     }
@@ -34,10 +34,22 @@ class Molecule {
 
     start () {
         if (this.isAnimated) return;
+
+        let t = 500;
+        
         for (let i = 0; i < this.numOfpoint; i++) {
-            this.point[i] = new this.figure();
-            this.point[i].setParam(this.speed, 1);
+            setTimeout(() => {
+                this.point[i] = new this.figure();
+                this.point[i].setParam(this.speed, this.speed);
+            }, t);
+            t += Math.random() * 1500;
         }
+
+        // setTimeout(() => {
+        //     this.square[i] = new this.figure();
+        //     this.square[i].setParam(this.speed);
+        // }, Math.random() * 8000);
+
         this.animate();
     } 
     
