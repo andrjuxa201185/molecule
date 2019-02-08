@@ -39,7 +39,7 @@ class Molecule {
                 this.point[i] = new this.figure();
                 this.point[i].setParam(this.speed, this.speed);
             }, t);
-            t += Math.random() * 1000;
+            t += Math.random() * 100;
         }
         this.animate();
     } 
