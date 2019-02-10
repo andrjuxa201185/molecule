@@ -1,9 +1,21 @@
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById('canvas');
 
-  let molecule = new Molecule(canvas, Point, 40, 3);
+  canvas.setAttribute("height", window.innerHeight);
+  canvas.setAttribute("width", window.innerWidth - 17);
+
+
+  let molecule = new Molecule(canvas, Point, 50);
 
   molecule.start(); 
- 
 
+  document.addEventListener("scroll", function (){
+    let coord = canvas.getBoundingClientRect();
+    if (coord.bottom < 0){
+      molecule.stop();
+    } else {
+      molecule.start();
+    }
+  });
 });
+

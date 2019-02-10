@@ -1,14 +1,13 @@
 class Molecule {
-    constructor (canvas, Point, numOfpoint=30, numOfLine=3) {
+    constructor (canvas, Point, numOfpoint=30) {
         this.figure = Point;
         this.point = [];
         this.raf;
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.numOfpoint = numOfpoint;
-        this.speed = 2;
+        this.speed = 1;
         this.isAnimated = false;
-        this.numOfLine = numOfLine;
     }
 
     animate () {
@@ -16,14 +15,26 @@ class Molecule {
         this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight); 
         for (let i = 0; i < this.numOfpoint; i++) {
             if (this.point[i]) {
-                for (let j = 1; j < this.numOfLine; j++) {
-                    if (this.point[i-j]){
-                        this.point[i].drow(this.ctx, this.point[i-j].positionX, this.point[i-j].positionY);
-                    } 
-                    else {
-                        this.point[i].drow(this.ctx, this.point[i].positionX, this.point[i].positionY);
+                this.point[i].drowPoint(this.ctx);
+
+                for (let j = 0; j < this.numOfpoint; j++) {
+                    if (this.point[j]){
+                        if ((this.point[i].positionX < this.point[j].positionX + 250) && (this.point[i].positionX > this.point[j].positionX - 250)){
+                            if ((this.point[i].positionY < this.point[j].positionY + 250) && (this.point[i].positionY > this.point[j].positionY - 250)){
+                                if ((this.point[i].numberLine < 2) && (this.point[j].numberLine < 2)) {
+                                    this.point[i].drowLine(this.ctx, this.point[j].positionX, this.point[j].positionY);
+                                    this.point[i].numberLine += 1;
+                                    this.point[j].numberLine += 1;
+                                }
+                            }else{
+                                this.point[i].numberLine = 0;
+                            }
+                        }else{
+                            this.point[i].numberLine = 0;
+                        }
                     }
                 }
+
                 this.point[i].move();
                 this.point[i].checkPosition(this.canvas);
             }
@@ -39,12 +50,13 @@ class Molecule {
                 this.point[i] = new this.figure();
                 this.point[i].setParam(this.speed, this.speed);
             }, t);
-            t += Math.random() * 100;
+            t += Math.random() * 300;
         }
         this.animate();
     } 
     
     stop () {
+        if (!this.isAnimated) return;
         cancelAnimationFrame(this.raf);
         this.isAnimated = false;
     }
